@@ -6,24 +6,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SongsDatabaseTest {
     @Test
-    void testAddSong() {
+    public void testAddSong() {
         SongsDatabase db = new SongsDatabase();
-        db.addSong("Rap", "Savage");
-        assertTrue(db.getSongs("Rap").contains("Savage"));
+        db.addSong("Classical", "Moonlight Sonata");
+        assertTrue(db.getSongs("Classical").contains("Moonlight Sonata"));
     }
 
     @Test
-    void testGetGenreOfSong() {
+    public void testGetGenreOfSong() {
         SongsDatabase db = new SongsDatabase();
-        db.addSong("Rap", "Savage");
-        assertEquals("Rap", db.getGenreOfSong("Savage"));
+        db.addSong("Blues", "Crossroad Blues");
+        assertEquals("Blues", db.getGenreOfSong("Crossroad Blues"));
     }
 
     @Test
-    void testGetSongs() {
+    public void testGetSongs() {
         SongsDatabase db = new SongsDatabase();
-        db.addSong("Rap", "Savage");
-        db.addSong("Rap", "Gin and Juice");
-        assertEquals(2, db.getSongs("Rap").size());
+        db.addSong("Blues", "Sweet Home Chicago");
+        db.addSong("Blues", "The Thrill is Gone");
+        Set<String> songs = db.getSongs("Blues");
+        assertTrue(songs.contains("Sweet Home Chicago") && songs.contains("The Thrill is Gone"));
     }
 }
